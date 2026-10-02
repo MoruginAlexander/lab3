@@ -3,6 +3,16 @@
   box-sizing: border-box;
 }
 
+/* Картинки не вылезают за экран */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -84,11 +94,7 @@ body {
   padding: 20px;
 }
 
-/*
- * Обёртка контента — Flex Box.
- * На смартфоне: колонка, таблица визуально выше списка ссылок
- * за счёт order.
- */
+/* Обёртка контента — Flex Box, всегда одна колонка */
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -101,7 +107,7 @@ body {
   border-radius: 6px;
 }
 
-/* Порядок: таблица — 1, ссылки и форма — 2 */
+/* Mobile First: на смартфоне таблица визуально выше ссылок */
 .table-section {
   order: 1;
 }
@@ -187,6 +193,7 @@ body {
   width: 100%;
   margin-top: 20px;
   background-color: #7fa7d8;
+  scroll-margin-top: 20px;
 }
 
 .footer-inner {
@@ -210,27 +217,14 @@ body {
   }
 
   /*
-   * Контент — две колонки:
-   * слева основная часть (ссылки и форма), справа таблица.
-   * Но по ТЗ на десктопе страница должна выглядеть как в предыдущем задании.
-   * В предыдущем задании таблица шла после формы.
-   * Поэтому на десктопе возвращаем естественный порядок:
-   * ссылки и форма — 1, таблица — 2.
+   * На планшетах и десктопах возвращаем естественный порядок:
+   * ссылки и форма — выше, таблица — ниже.
    */
-  .content-wrapper {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
   .links-form-section {
     order: 1;
-    flex: 3;
   }
 
   .table-section {
     order: 2;
-    flex: 1;
-    margin-bottom: 0;
   }
 }
